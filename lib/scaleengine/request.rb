@@ -30,7 +30,7 @@ class ScaleEngineAPI
     end
 
     def prepare_request
-      query[:timestamp] = Time.now.to_i
+      query[:timestamp] = Time.now.utc.to_i
       query[:signature] = Base64.strict_encode64(request_signature)
       body = {:json => JSON.generate(query), :multipart => true}
     end
